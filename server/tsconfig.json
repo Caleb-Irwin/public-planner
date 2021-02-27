@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "moduleResolution": "node",
     "watch": true,
-    "outDir": "./build/",
+    "outDir": "build/",
     "types": ["node"]
   }
 }

@@ -28,7 +28,7 @@ updateHtmlStr(true);
 // adds 'smart' compression
 app.use(compression());
 // static files
-app.use("/static", express.static(path.join(__dirname, "../static")));
+app.use("/", express.static(path.join(__dirname, "../.../svelte/public/")));
 
 //* Routes
 app.get("/*", async (req, res) => {
