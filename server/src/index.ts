@@ -9,32 +9,16 @@ import { promises } from "fs";
 const app = express();
 // defines port
 const port = 5000;
-//html string
-let htmlStr =
-  "<h1>Server Error (htmlStr not updated from start up). Try reloading!</h1>";
-let timeLastUpdated: number = Date.now();
-let updateHtmlStr = async (force = false) => {
-  if (force || Date.now() < timeLastUpdated + 15000) {
-    timeLastUpdated = Date.now();
-    let tempHtmlStr = (
-      await promises.readFile("./build/index.html")
-    ).toString();
-    htmlStr = tempHtmlStr;
-  }
-};
-updateHtmlStr(true);
 
 //* Middleware
 // adds 'smart' compression
 app.use(compression());
 // static files
-app.use("/", express.static(path.join(__dirname, "../.../svelte/public/")));
+app.use("/", express.static(path.join(__dirname, "../../svelte/public/")));
 
 //* Routes
-app.get("/*", async (req, res) => {
-  res.set("Content-Type", "text/html");
-  res.end();
-  updateHtmlStr();
+app.get("/", async (req, res) => {
+  res.sendFile("../../svelte/public/index.html");
 });
 
 //* Listening
