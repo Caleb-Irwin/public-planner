@@ -21,7 +21,7 @@ let updateHtmlStr = async (force = false) => {
     ).toString();
     tempHtmlStr = tempHtmlStr.replace(
       "/*script-inject*/",
-      (await promises.readFile("./build/elm.min.js")).toString()
+      (await promises.readFile("./build/elm.js")).toString()
     );
     htmlStr = tempHtmlStr;
   }
