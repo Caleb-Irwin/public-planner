@@ -19,10 +19,6 @@ let updateHtmlStr = async (force = false) => {
     let tempHtmlStr = (
       await promises.readFile("./build/index.html")
     ).toString();
-    tempHtmlStr = tempHtmlStr.replace(
-      "/*script-inject*/",
-      (await promises.readFile("./build/elm.js")).toString()
-    );
     htmlStr = tempHtmlStr;
   }
 };
@@ -37,7 +33,6 @@ app.use("/static", express.static(path.join(__dirname, "../static")));
 //* Routes
 app.get("/*", async (req, res) => {
   res.set("Content-Type", "text/html");
-  res.send(htmlStr.replace("/*flags-inject*/", "")); //TODO
   res.end();
   updateHtmlStr();
 });
