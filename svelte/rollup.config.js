@@ -6,6 +6,7 @@ import { terser } from "rollup-plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
 import css from "rollup-plugin-css-only";
+import autoPreprocess from "svelte-preprocess";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -44,12 +45,13 @@ export default {
   },
   plugins: [
     svelte({
-      preprocess: sveltePreprocess({ sourceMap: !production }),
+      preprocess: autoPreprocess(),
       compilerOptions: {
         // enable run-time checks when not in production
         dev: !production,
       },
     }),
+    typescript({ sourceMap: true }),
     // we'll extract any component CSS out into
     // a separate file - better for performance
     css({ output: "bundle.css" }),
@@ -71,15 +73,15 @@ export default {
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
-    !production && serve(),
+    // !production && serve(),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    !production && livereload("public"),
+    // !production && livereload("public"),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser(),
+    /*!production && */ terser(),
   ],
   watch: {
     clearScreen: false,
