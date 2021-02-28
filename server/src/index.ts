@@ -14,12 +14,16 @@ const port = 5000;
 // adds 'smart' compression
 app.use(compression());
 // static files
-app.use("/", express.static(path.join(__dirname, "../../svelte/public/")));
+app.use(
+  "/",
+  express.static(path.join(__dirname, "../../svelte/public/"), {
+    index: "index.html",
+  })
+);
 
 //* Routes
-app.get("/", async (req, res) => {
-  res.sendFile("../../svelte/public/index.html");
-});
+// app.get("/", async (req, res) => {
+// });
 
 //* Listening
 // tells electron to listen to predefined port
