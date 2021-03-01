@@ -1,8 +1,4 @@
-import * as redis from "redis";
-const client = redis.createClient();
-
-client.on("error", function (error) {
-  console.error(error);
-});
-
+import { createNodeRedisClient, CreateNodeRedisClient } from "handy-redis";
+import { promisify } from "util";
+const client = createNodeRedisClient();
 export default client;
