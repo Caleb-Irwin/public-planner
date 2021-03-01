@@ -1,13 +1,28 @@
 <script lang="ts">
-  export let name: string;
+  export let dataIn: string;
+  try {
+    const data = JSON.parse(dataIn);
+  } catch (error) {
+    const data = null;
+  }
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p>
+  <h1>Public Planner</h1>
+  <div id="subtitle">
+    <p class="width">
+      Have you ever wanted to tell strangers that you will be a certain place at
+      a certain time anonymously? Well now you can! Public Planner is great for
+      dog parks and was inspired by <a
+        href="https://stackoverflow.blog/2021/02/12/podcast-312-were-building-a-web-app-got-any-advice/"
+        >this</a
+      > episode of The Stack Overflow Podcast.
+    </p>
+    <p class="width">
+      Created by <a href="https://calebirwin.ca/">Caleb Irwin</a> to learn how to
+      use Redis and Express, and how to build Svelte apps.
+    </p>
+  </div>
 </main>
 
 <style>
@@ -23,8 +38,18 @@
     text-transform: uppercase;
     font-size: 4em;
     font-weight: 100;
+    margin-bottom: 0px;
   }
-
+  #subtitle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .width {
+    max-width: 700px;
+  }
   @media (min-width: 640px) {
     main {
       max-width: none;
