@@ -1,8 +1,7 @@
 import * as express from "express";
-import * as redis from "redis";
 import * as compression from "compression";
 import * as path from "path";
-import { promises } from "fs";
+import client from "./redis";
 
 //* Initalizes express and config
 // express init
