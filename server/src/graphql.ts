@@ -4,13 +4,13 @@ import { buildSchema } from "graphql";
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
   type Query {
-    hello: String
+    serverMsg: String
   }
 `);
 
 // The root provides a resolver function for each API endpoint
 var root = {
-  hello: () => {
+  serverMsg: () => {
     return "Hello world!";
   },
 };

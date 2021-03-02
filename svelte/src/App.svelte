@@ -1,10 +1,17 @@
 <script lang="ts">
-  export let dataIn: string;
-  try {
-    const data = JSON.parse(dataIn);
-  } catch (error) {
-    const data = null;
-  }
+  import { setClient } from "svelte-apollo";
+  import { ApolloClient, InMemoryCache } from "@apollo/client";
+  import GetServerMsg from "./GetServerMessage.svelte";
+
+  const cache = new InMemoryCache();
+
+  const client = new ApolloClient({
+    cache: cache,
+    uri: "http://localhost:5000/api",
+    name: "Svelte Client",
+  });
+
+  setClient(client);
 </script>
 
 <main>
@@ -18,6 +25,7 @@
         >this</a
       > episode of The Stack Overflow Podcast.
     </p>
+    <GetServerMsg />
     <p class="width">
       Created by <a href="https://calebirwin.ca/">Caleb Irwin</a> to learn how to
       use Redis and Express, and how to build Svelte apps.
