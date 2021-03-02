@@ -2,6 +2,7 @@ import * as express from "express";
 import * as compression from "compression";
 import * as path from "path";
 import client from "./redis";
+import graphql from "./graphql";
 
 //* Initalizes express and config
 // express init
@@ -19,27 +20,13 @@ app.use(
     index: "index.html",
   })
 );
+// graphql
+app.use("/api", graphql);
 
 //* Routes
-app.post("/api/:mp/admin/create", (req, res) => {
-  res.end();
-});
 
-app.put("/api/:p/admin/edit", (req, res) => {
-  res.end();
-});
+//None!
 
-app.delete("/api/:p/admin/delete", (req, res) => {
-  res.end();
-});
-
-app.get("/api/:p", async (req, res) => {
-  res.end();
-});
-
-app.post("/api/:m/add", (req, res) => {
-  res.end();
-});
 //* Listening
 // tells electron to listen to predefined port
 app.listen(port, "localhost", () => {
