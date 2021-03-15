@@ -7,7 +7,7 @@ import {
   GraphQLInt,
 } from "graphql";
 
-//
+// Planner
 const Planner = new GraphQLObjectType({
   name: "Planner",
   fields: {
