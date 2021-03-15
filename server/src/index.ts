@@ -1,10 +1,9 @@
 import * as express from "express";
 import * as compression from "compression";
 import * as path from "path";
-import client from "./redis";
 import graphql from "./graphql";
 
-//* Initalizes express and config
+//* Initializes express and config
 // express init
 const app = express();
 // defines port
@@ -21,7 +20,9 @@ app.use(
   })
 );
 // graphql
-app.use("/api", graphql);
+// app.use("/api", graphql);
+graphql.applyMiddleware({ app, path: "/api/" });
+console.log(graphql.graphqlPath);
 
 //* Routes
 

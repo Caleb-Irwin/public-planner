@@ -1,4 +1,4 @@
-import { graphqlHTTP } from "express-graphql";
+import { ApolloServer } from "apollo-server-express";
 import {
   buildSchema,
   GraphQLSchema,
@@ -86,4 +86,4 @@ const schema = new GraphQLSchema({
 //   },
 // };
 
-export default graphqlHTTP({ schema: schema, graphiql: true });
+export default new ApolloServer({ schema: schema });
