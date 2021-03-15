@@ -22,7 +22,6 @@ app.use(
 // graphql
 // app.use("/api", graphql);
 graphql.applyMiddleware({ app, path: "/api/" });
-console.log(graphql.graphqlPath);
 
 //* Routes
 
