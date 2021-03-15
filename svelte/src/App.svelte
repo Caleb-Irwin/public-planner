@@ -1,7 +1,10 @@
 <script lang="ts">
+  import Router from "svelte-spa-router";
   import { setClient } from "svelte-apollo";
   import { ApolloClient, InMemoryCache } from "@apollo/client";
-  import GetServerMsg from "./GetServerMessage.svelte";
+
+  import GetServerMsg from "./Components/GetServerMessage.svelte";
+  import routes from "./routes";
 
   const cache = new InMemoryCache();
 
@@ -26,6 +29,7 @@
       > episode of The Stack Overflow Podcast.
     </p>
     <GetServerMsg />
+    <Router {routes} />
     <p class="width">
       Created by <a href="https://calebirwin.ca/">Caleb Irwin</a> to learn how to
       use Redis and Express, and how to build Svelte apps.

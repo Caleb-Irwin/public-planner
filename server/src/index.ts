@@ -15,7 +15,7 @@ const port = 5000;
 app.use(compression());
 // static files
 app.use(
-  "/",
+  "/static/",
   express.static(path.join(__dirname, "../../svelte/public/"), {
     index: "index.html",
   })
@@ -25,7 +25,9 @@ app.use("/api", graphql);
 
 //* Routes
 
-//None!
+app.get("/*", async (req, res) => {
+  res.sendFile(path.join(__dirname, "../../svelte/public/index.html"));
+});
 
 //* Listening
 // tells electron to listen to predefined port
