@@ -46,34 +46,34 @@ const schema = new GraphQLSchema({
   }),
 });
 // var schema = buildSchema(`
-//   type Query {
-//     serverMsg: String,
-//     planner(id: String!): Planner
+// type Query {
+//   serverMsg: String,
+//   planner(id: String!): Planner
+// }
+// type Mutation {
+//   CreatePlanner(id: String, name: String) {
+//     id: String,
+//     name: String,
+//     secret: String,
+//     adminHashHex: String
 //   }
-//   type Mutation {
-//     CreatePlanner(id: String, name: String) {
-//       id: String,
-//       name: String,
-//       secret: String,
-//       adminHashHex: String
-//     }
-//   }
-//   type Planner {
-//     id: String!,
-//     name: String!,
-//     description: String,
-//     adminHashHex: String,
-//     refreshTimeHourUTC: Int!,
-//     plannerLengthHours: Int!,
-//     timeIncrementSeconds: Int!,
-//     planned: [Booking]
-//   }
-//   type Booking {
-//     startSeconds: Int!,
-//     endSeconds: Int!,
-//     count: Int!,
-//     names: [String]
-//   }
+// }
+// type Planner {
+//   id: String!,
+//   name: String!,
+//   description: String,
+//   adminHashHex: String,
+//   refreshTimeHourUTC: Int!,
+//   plannerLengthHours: Int!,
+//   timeIncrementSeconds: Int!,
+//   planned: [Booking]
+// }
+// type Booking {
+//   startSeconds: Int!,
+//   endSeconds: Int!,
+//   count: Int!,
+//   names: [String]
+// }
 // `);
 
 // The root provides a resolver function for each API endpoint
