@@ -1,5 +1,4 @@
 */node_modules
-/svelte/public/build
 /server/build
 package-lock.json
 .vscode

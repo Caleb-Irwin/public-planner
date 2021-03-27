@@ -7,6 +7,7 @@ import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
 import css from "rollup-plugin-css-only";
 import autoPreprocess from "svelte-preprocess";
+import copy from "rollup-plugin-copy";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -41,7 +42,7 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "public/build/bundle.js",
+    file: "../server/build/public/bundle.js",
   },
   plugins: [
     svelte({
@@ -82,6 +83,9 @@ export default {
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     /*!production && */ terser(),
+    copy({
+      targets: [{ src: "public/**/*", dest: "../server/build/public/" }],
+    }),
   ],
   watch: {
     clearScreen: false,

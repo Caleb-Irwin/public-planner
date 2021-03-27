@@ -21,9 +21,10 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
+    "start": "node ./build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-server": "tsc",
-    "build": "tsc && cd ../svelte/ && npm run build",
+    "build": "npm run build-server && cd ../svelte/ && npm run build",
     "dev-server": "tsc -w",
     "dev": "concurrently --kill-others \"npm run dev-server\" \"cd ../svelte/ && npm run dev\" \"nodemon ./build\"",
     "i": "npm i && cd ../svelte/ && npm i"
