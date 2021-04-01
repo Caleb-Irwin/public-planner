@@ -8,6 +8,7 @@ import typescript from "@rollup/plugin-typescript";
 import css from "rollup-plugin-css-only";
 import autoPreprocess from "svelte-preprocess";
 import copy from "rollup-plugin-copy";
+import babel from "@rollup/plugin-babel";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -67,10 +68,8 @@ export default {
       dedupe: ["svelte"],
     }),
     commonjs(),
-    typescript({
-      sourceMap: !production,
-      inlineSources: !production,
-    }),
+    typescript(),
+    babel({ babelHelpers: "bundled" }),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
