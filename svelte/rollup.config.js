@@ -43,7 +43,7 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "../server/build/public/bundle.js",
+    file: "../dev/build/public/bundle.js",
   },
   plugins: [
     svelte({
@@ -83,7 +83,7 @@ export default {
     // instead of npm run dev), minify
     /*!production && */ terser(),
     copy({
-      targets: [{ src: "public/**/*", dest: "../server/build/public/" }],
+      targets: [{ src: "public/**/*", dest: "../dev/build/public/" }],
     }),
   ],
   watch: {

@@ -1,0 +1,31 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "description": "dev for this project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently -k \"nodemon ./\" \"cd ../svelte/ && npm run dev\" \"cd ../api/ && tsc -w\" \"cd ../api/ && node ./build \"",
+    "i": "npm i && cd ../svelte/ && npm i && cd ../api/ && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caleb-Irwin/public-planner.git"
+  },
+  "author": "Caleb Irwin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Caleb-Irwin/public-planner/issues"
+  },
+  "homepage": "https://github.com/Caleb-Irwin/public-planner#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "nodemon": "^2.0.7"
+  }
+}

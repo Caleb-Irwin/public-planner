@@ -3,6 +3,7 @@
     "target": "es5",
     "moduleResolution": "node",
     "outDir": "./build/",
-    "types": ["node"]
+    "types": ["node"],
+    "rootDir": "./src/"
   }
 }

@@ -1,6 +1,6 @@
 */node_modules
-/server/build
-package-lock.json
+/dev/build
+/api/build
 .vscode
 .DS_Store
 .env
