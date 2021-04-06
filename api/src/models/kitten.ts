@@ -26,7 +26,7 @@ const KittenSchema = new Schema(KittenSchemaFields);
 //   return Kitten.find().where("birthdate").gt(minimumBirthDate);
 // });
 
-KittenSchema.method("speak", function (cb: any) {
+KittenSchema.method("speak", function (this: IKittenDoc) {
   const greeting = this.name
     ? "Meow name is " + this.name
     : "I don't have a name";
