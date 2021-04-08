@@ -10,7 +10,7 @@
 
   const client = new ApolloClient({
     cache: cache,
-    uri: "/api",
+    uri: "/api/",
     name: "Svelte Client",
   });
 

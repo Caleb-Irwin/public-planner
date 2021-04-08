@@ -86,4 +86,8 @@ const schema = new GraphQLSchema({
 //   },
 // };
 
-export default new ApolloServer({ schema: schema });
+export default new ApolloServer({
+  schema: schema,
+  introspection: true,
+  playground: true,
+});
