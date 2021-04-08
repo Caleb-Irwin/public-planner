@@ -9,8 +9,10 @@ import css from "rollup-plugin-css-only";
 import autoPreprocess from "svelte-preprocess";
 import copy from "rollup-plugin-copy";
 import babel from "@rollup/plugin-babel";
+require("dotenv").config();
 
 const production = !process.env.ROLLUP_WATCH;
+const buildPath = process.env.buildPath || "../dev/build/public/";
 
 export default {
   input: "src/main.ts",
@@ -18,7 +20,7 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "../dev/build/public/bundle.js",
+    file: buildPath + "bundle.js",
   },
   plugins: [
     svelte({
@@ -48,7 +50,7 @@ export default {
     // instead of npm run dev), minify
     !production && terser(),
     copy({
-      targets: [{ src: "public/**/*", dest: "../dev/build/public/" }],
+      targets: [{ src: "public/**/*", dest: buildPath }],
     }),
   ],
   watch: {
