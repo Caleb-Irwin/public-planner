@@ -15,19 +15,13 @@ const port = parseInt(process.env.PORT) || 5000;
 //* Middleware
 // static files
 app.use(
-  "/static/",
+  "/",
   express.static(path.join(__dirname, "./build/public/"), {
     index: "index.html",
   })
 );
 // api
 app.use("/api", proxy("localhost:20555"));
-
-//* Routes
-
-app.get("/*", async (req, res) => {
-  res.sendFile(path.join(__dirname, "./build/public/index.html"));
-});
 
 //* Listening
 // tells electron to listen to predefined port
