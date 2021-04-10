@@ -2,7 +2,6 @@ version: "3.9"
 services:
   server:
     build: ./svelte
-    container_name: "server"
     ports:
       - "80:80"
     depends_on:
@@ -11,12 +10,12 @@ services:
 
   api:
     build: ./api
-    container_name: "api"
     depends_on:
       - "database"
     environment:
       PORT: "8080"
       NODE_ENV: "production"
+      mongodb: "mongodb://database:27017/public-planner"
     expose:
       - "8080"
     restart: always
@@ -24,6 +23,10 @@ services:
   database:
     image: mongo
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - "public-planner-mongodb:/data/db"
+    expose:
+      - "27017"
+
+volumes:
+  public-planner-mongodb:
