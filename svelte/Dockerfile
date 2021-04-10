@@ -20,7 +20,7 @@ RUN npm run build
 
 
 # Second Stage of build
-FROM nginx:alpine
+FROM nginx:1.19-alpine
 
 WORKDIR /app
 
