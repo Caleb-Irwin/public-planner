@@ -45,10 +45,10 @@ export default {
     }),
     commonjs(),
     typescript({ sourceMap: true }),
-    !production && babel({ babelHelpers: "bundled" }),
+    production && babel({ babelHelpers: "bundled" }),
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    !production && terser(),
+    production && terser(),
     copy({
       targets: [{ src: "public/**/*", dest: buildPath }],
     }),

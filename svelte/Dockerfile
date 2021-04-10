@@ -24,10 +24,10 @@ FROM nginx:alpine
 
 WORKDIR /app
 
-# Copy nginx configuration
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-
 # Copy static files from build stage
 COPY --from=build /app/build/ /www/data/
+
+# Copy nginx configuration
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
