@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Router from "svelte-spa-router";
+  import Router, { location, link } from "svelte-spa-router";
   import { setClient } from "svelte-apollo";
   import { ApolloClient, InMemoryCache } from "@apollo/client";
 
   import GetServerMsg from "./Components/GetServerMessage.svelte";
-  import routes from "./routes";
+  import { routes, menuBarOptions } from "./routes";
 
   const cache = new InMemoryCache();
 
@@ -20,15 +20,17 @@
 <main>
   <h1>Public Planner</h1>
   <div id="subtitle">
-    <p class="width">
-      Have you ever wanted to tell strangers that you will be a certain place at
-      a certain time anonymously? Well now you can! Public Planner is great for
-      dog parks and was inspired by <a
-        href="https://stackoverflow.blog/2021/02/12/podcast-312-were-building-a-web-app-got-any-advice/"
-        >this</a
-      > episode of The Stack Overflow Podcast.
-    </p>
-    <GetServerMsg />
+    <h2>
+      {#each menuBarOptions as option, i}
+        {i === 0 ? "" : " | "}
+        {#if $location === option.location}
+          {option.name}
+        {:else}
+          <a href={option.location} use:link>{option.name}</a>
+        {/if}
+      {/each}
+    </h2>
+    <!-- <GetServerMsg /> -->
     <Router {routes} />
     <p class="width">
       Created by <a href="https://calebirwin.ca/">Caleb Irwin</a> to learn how to
