@@ -1,3 +1,7 @@
+<script lang="ts">
+  import PlannerInput from "../Components/PlannerInput.svelte";
+</script>
+
 <div>
-  <h1>Home</h1>
+  <PlannerInput />
 </div>

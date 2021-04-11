@@ -1,3 +1,10 @@
+<script lang="ts">
+  import PlannerInput from "../Components/PlannerInput.svelte";
+</script>
+
 <div>
-  <h1>Create</h1>
+  <form>
+    <!-- <label for="nameInput">Name:</label> -->
+    <PlannerInput onlyValidate={true} />
+  </form>
 </div>
