@@ -3,6 +3,8 @@
     Have you ever wanted to tell strangers that you will be a certain place at a
     certain time anonymously? Well now you can! Public Planner is great for dog
     parks and was inspired by <a
+      target="_blank"
+      rel="noopener noreferrer"
       href="https://stackoverflow.blog/2021/02/12/podcast-312-were-building-a-web-app-got-any-advice/"
       >this</a
     > episode of The Stack Overflow Podcast.

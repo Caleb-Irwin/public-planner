@@ -33,8 +33,11 @@
     <!-- <GetServerMsg /> -->
     <Router {routes} />
     <p class="width">
-      Created by <a href="https://calebirwin.ca/">Caleb Irwin</a> to learn how to
-      use Redis and Express, and how to build Svelte apps.
+      Created by <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://calebirwin.ca/">Caleb Irwin</a
+      > to learn how to use Redis and Express, and how to build Svelte apps.
     </p>
   </div>
 </main>
