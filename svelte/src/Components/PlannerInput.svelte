@@ -1,4 +1,5 @@
 <script lang="ts">
+  import getIdFromName from "../Utils/getIdFromName"
   export let onlyValidate: boolean = false;
   export let validatiors: ((
     id: string
@@ -11,12 +12,8 @@
     
   }
   let id = "";
-  $: id = textField
-    .toLowerCase()
-    .replace(/[^a-z \d-]/g, "") //leaves only a-z, 0-9, and -
-    .replace(/-+/g, " ") // changes all sets of - to one space
-    .trim()
-    .replace(/ +/g, "-"); // changes all sets of spaces to one -
+  $: id = getIdFromName(textField)
+    
 </script>
 
 <div>
