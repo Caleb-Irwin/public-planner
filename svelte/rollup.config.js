@@ -45,7 +45,7 @@ export default {
     }),
     commonjs(),
     typescript({ sourceMap: true }),
-    production && babel({ babelHelpers: "bundled" }),
+    production && babel({ babelHelpers: "bundled", extensions: [".ts", ".js"] }),
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
