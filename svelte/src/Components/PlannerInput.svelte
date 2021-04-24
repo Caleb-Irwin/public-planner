@@ -1,19 +1,13 @@
 <script lang="ts">
-  import getIdFromName from "../Utils/getIdFromName"
-  export let onlyValidate: boolean = false;
-  export let validatiors: ((
-    id: string
-  ) => Promise<{ state: "valid" | "invalid" | "n/a"; msg: string }>)[] = [];
-  export let onlyShowInvalid: boolean = true;
+  import { getIdFromName, parseIdFromName, detailedIdValid } from "../Utils/id";
+  export let createMode: boolean = false;
+  export let showValidation: boolean = false;
   export let checkDatabase: boolean = true;
-
-  let textField = "";
-  function handleSubmit() {
-    
-  }
-  let id = "";
-  $: id = getIdFromName(textField)
-    
+  export let textField = "";
+  export let id: string | null;
+  $: id = getIdFromName(textField);
+  $: validator = detailedIdValid(parseIdFromName(textField));
+  function handleSubmit() {}
 </script>
 
 <div>
@@ -24,11 +18,18 @@
     size="25"
     placeholder="Name (or ID)"
   />
-  {#if !onlyValidate}
+  {#if !createMode}
     <button on:click={handleSubmit}>&#8594;</button>
+    {#if id?.length}
+      <p>ID: "{id}"</p>
+    {/if}
   {/if}
-  {#if id.length}
-    <p>ID: "{id}"</p>
+  {#if showValidation}
+    <ul>
+      {#each validator.reasons as validation}
+        <li>{validation.passed}: {validation.label}</li>
+      {/each}
+    </ul>
   {/if}
 </div>
 
@@ -36,5 +37,8 @@
   button {
     color: white;
     background: #ff875f;
+  }
+  ul {
+    list-style-type: none;
   }
 </style>
